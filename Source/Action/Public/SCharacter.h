@@ -6,6 +6,9 @@
 #include "GameFramework/Character.h"
 #include "SCharacter.generated.h"
 
+class UCameraComponent;
+class USpringArmComponent;
+
 UCLASS()
 class ACTION_API ASCharacter : public ACharacter
 {
@@ -15,10 +18,18 @@ public:
 	// Sets default values for this character's properties
 	ASCharacter();
 
-protected:			
+protected:	
+
+	UPROPERTY(VisibleAnywhere)
+	USpringArmComponent* SpringArmComp;
+
+	UPROPERTY(VisibleAnywhere)
+	UCameraComponent* CameraComp;
 
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+
+	void MoveForward(float value);
 
 public:	
 	// Called every frame
